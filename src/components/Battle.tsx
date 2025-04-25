@@ -11,10 +11,7 @@ import {
   Center,
   Spinner,
   VStack,
-  HStack,
   Select,
-  Badge,
-  Progress,
   useDisclosure,
   Modal,
   ModalOverlay,
@@ -46,7 +43,7 @@ interface BattleResult {
   date: string;
 }
 
-const typeColors: { [key: string]: string } = {
+export const typeColors: { [key: string]: string } = {
   normal: '#A8A878',
   fire: '#F08030',
   water: '#6890F0',
@@ -66,7 +63,6 @@ const typeColors: { [key: string]: string } = {
   steel: '#B8B8D0',
   fairy: '#EE99AC',
 };
-
 const Battle = () => {
   const [team, setTeam] = useState<TeamPokemon[]>([]);
   const [selectedPokemon, setSelectedPokemon] = useState<number | null>(null);

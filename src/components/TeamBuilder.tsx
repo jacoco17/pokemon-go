@@ -58,16 +58,23 @@ const TeamBuilder = () => {
     fetchTeam();
   }, []);
 
-  // Replace the existing fetch call with:
-const fetchTeam = async () => {
-  try {
-    const response = await axios.get('https://niffled.onrender.com/api/team');
-    setTeam(response.data);
-  } catch (error) {
-    console.error('Error fetching team:', error);
-  }
-};
-
+  const fetchTeam = async () => {
+    setLoading(true);
+    try {
+      const response = await axios.get('niffled.onrender.com/api/team');
+      setTeam(response.data);
+    } catch (error) {
+      console.error('Error fetching team:', error);
+      toast({
+        title: 'Error',
+        description: 'Failed to fetch your team',
+        status: 'error',
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    setLoading(false);
+  };
 
   const removeFromTeam = async (id: number) => {
     try {
