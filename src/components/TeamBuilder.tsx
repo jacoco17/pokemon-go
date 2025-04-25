@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api/config';
 import {
   Box,
   Container,
@@ -61,7 +61,7 @@ const TeamBuilder = () => {
   const fetchTeam = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('niffled.onrender.com/api/team');
+      const response = await api.get('/api/team');
       setTeam(response.data);
     } catch (error) {
       console.error('Error fetching team:', error);
@@ -78,7 +78,7 @@ const TeamBuilder = () => {
 
   const removeFromTeam = async (id: number) => {
     try {
-      await axios.delete(`niffled.onrender.com/api/team/${id}`);
+      await api.delete(`/api/team/${id}`);
       setTeam(team.filter((pokemon) => pokemon.id !== id));
       toast({
         title: 'Success',
@@ -128,7 +128,6 @@ const TeamBuilder = () => {
         >
           My Team
         </Text>
-
         {team.length === 0 ? (
           <Center>
             <Text fontSize="xl" color="whiteAlpha.800">
@@ -160,7 +159,6 @@ const TeamBuilder = () => {
                         objectFit="contain"
                       />
                     </Center>
-
                     <Text
                       fontSize="2xl"
                       fontWeight="bold"
@@ -169,7 +167,6 @@ const TeamBuilder = () => {
                     >
                       {capitalizeFirstLetter(pokemon.name)}
                     </Text>
-
                     <HStack justify="center" spacing={2}>
                       {pokemon.types?.map((type) => (
                         <Badge
@@ -184,7 +181,6 @@ const TeamBuilder = () => {
                         </Badge>
                       ))}
                     </HStack>
-
                     <Button
                       colorScheme="red"
                       onClick={() => removeFromTeam(pokemon.id)}
@@ -197,7 +193,6 @@ const TeamBuilder = () => {
                 </Box>
               ))}
             </Grid>
-
             {totalPages > 1 && (
               <Flex justify="center" mt={8} gap={2}>
                 <Button
@@ -228,4 +223,4 @@ const TeamBuilder = () => {
   );
 };
 
-export default TeamBuilder; 
+export default TeamBuilder;
