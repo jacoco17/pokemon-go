@@ -48,7 +48,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, onTeamUpdate 
   const handleAddToTeam = async () => {
     try {
       // First check if the team is full
-      const teamResponse = await axios.get('/api/team');
+      const teamResponse = await axios.get('https://niffled.onrender.com/api/team');
       if (teamResponse.data.length >= 6) {
         toast({
           title: 'Team Full',
@@ -73,7 +73,7 @@ export const PokemonCard: React.FC<PokemonCardProps> = ({ pokemon, onTeamUpdate 
       }
 
       // Add Pokemon to team
-      await axios.post('/api/team', {
+      await axios.post('https://niffled.onrender.com/api/team', {
         pokemonId: pokemon.id,
         name: pokemon.name,
         image: pokemon.sprites.front_default,

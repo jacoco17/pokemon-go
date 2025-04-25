@@ -86,7 +86,7 @@ const Battle = () => {
   const fetchTeam = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/team');
+      const response = await axios.get('niffled.onrender.com/api/team');
       setTeam(response.data);
     } catch (error) {
       console.error('Error fetching team:', error);

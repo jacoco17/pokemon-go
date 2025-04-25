@@ -81,7 +81,7 @@ const PokemonDetail = () => {
   const addToTeam = async () => {
     if (!pokemon) return;
     try {
-      await axios.post('/api/team', {
+      await axios.post('niffled.onrender.com/api/team', {
         pokemonId: pokemon.id,
         name: pokemon.name,
         image: pokemon.sprites.front_default,

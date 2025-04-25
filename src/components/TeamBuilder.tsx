@@ -61,7 +61,7 @@ const TeamBuilder = () => {
   const fetchTeam = async () => {
     setLoading(true);
     try {
-      const response = await axios.get('/api/team');
+      const response = await axios.get('niffled.onrender.com/api/team');
       setTeam(response.data);
     } catch (error) {
       console.error('Error fetching team:', error);
@@ -78,7 +78,7 @@ const TeamBuilder = () => {
 
   const removeFromTeam = async (id: number) => {
     try {
-      await axios.delete(`/api/team/${id}`);
+      await axios.delete(`niffled.onrender.com/api/team/${id}`);
       setTeam(team.filter((pokemon) => pokemon.id !== id));
       toast({
         title: 'Success',
