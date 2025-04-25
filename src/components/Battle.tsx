@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import api from '../api/config';
 import axios from 'axios';
 import {
   Box,
@@ -80,21 +81,12 @@ const Battle = () => {
   }, []);
 
   const fetchTeam = async () => {
-    setLoading(true);
     try {
-      const response = await axios.get('niffled.onrender.com/api/team');
+      const response = await api.get('/api/team');
       setTeam(response.data);
     } catch (error) {
       console.error('Error fetching team:', error);
-      toast({
-        title: 'Error',
-        description: 'Failed to fetch your team',
-        status: 'error',
-        duration: 3000,
-        isClosable: true,
-      });
     }
-    setLoading(false);
   };
 
   const generateEnemyTeam = async () => {
