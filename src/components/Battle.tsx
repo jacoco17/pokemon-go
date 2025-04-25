@@ -10,7 +10,6 @@ import {
   Button,
   useToast,
   Center,
-  Spinner,
   VStack,
   Select,
   useDisclosure,
@@ -70,7 +69,7 @@ const Battle = () => {
   const [selectedEnemyPokemon, setSelectedEnemyPokemon] = useState<number | null>(null);
   const [battleResult, setBattleResult] = useState<BattleResult | null>(null);
   const [battleHistory, setBattleHistory] = useState<BattleResult[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Removed unused loading state
   const [enemyTeam, setEnemyTeam] = useState<any[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
@@ -192,13 +191,7 @@ const Battle = () => {
     return string.charAt(0).toUpperCase() + string.slice(1);
   };
 
-  if (loading) {
-    return (
-      <Center h="50vh">
-        <Spinner size="xl" color="whiteAlpha.900" />
-      </Center>
-    );
-  }
+  // Removed unused loading logic
 
   if (team.length === 0) {
     return (
